@@ -1,14 +1,21 @@
 package com.example.sj.mvp_fw.base;
 
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 
 /**
  * Created by SJ on 2016.11.29.
  */
 
-public abstract class BaseActivity extends Activity {
+public abstract class BaseActivity<V,T extends  BasePresenter<V>> extends Activity {
     private final static String TAG ="BaseActivity";
+
+
+    protected T mPresenter;
 
     @Override
     protected void onStart() {
@@ -23,6 +30,10 @@ public abstract class BaseActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        initView();
+        mPresenter = createPresenter();
+        mPresenter.attachView((V)this);
     }
 
     @Override
@@ -39,6 +50,7 @@ public abstract class BaseActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        mPresenter.detacheView();
     }
 
     @Override
@@ -50,5 +62,7 @@ public abstract class BaseActivity extends Activity {
 
     }
     protected abstract void test();
+
+    protected abstract T createPresenter();
 
 }
