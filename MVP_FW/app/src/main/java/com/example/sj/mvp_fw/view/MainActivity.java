@@ -1,6 +1,8 @@
 package com.example.sj.mvp_fw.view;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.sj.mvp_fw.R;
@@ -9,17 +11,25 @@ import com.example.sj.mvp_fw.base.BasePresenter;
 import com.example.sj.mvp_fw.interfaces.mViewInterface;
 import com.example.sj.mvp_fw.presenter.MainPresenter;
 
-public class MainActivity extends BaseActivity implements mViewInterface {
+import static android.os.Build.VERSION_CODES.M;
+
+public class MainActivity extends BaseActivity<mViewInterface,BasePresenter<mViewInterface>> implements mViewInterface,View.OnClickListener{
 
     private MainPresenter mainPresenter;
-
-
+    private TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mainPresenter = new MainPresenter(this);
+        //mainPresenter = new MainPresenter(this);
+        mainPresenter = (MainPresenter)mPresenter;
         mainPresenter.setData();
+        setListener();
+    }
+
+    @Override
+    protected void initfindViewById() {
+
     }
 
     @Override
@@ -33,8 +43,24 @@ public class MainActivity extends BaseActivity implements mViewInterface {
     }
 
     @Override
+    protected void setListener() {
+        textView.setOnClickListener(this);
+    }
+
+    @Override
     public void showData(String data) {
-        TextView textView = (TextView)findViewById(R.id.textview);
+        textView = (TextView)findViewById(R.id.textview);
         textView.setText(data);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.textview:
+                startActivity(new Intent(MainActivity.this,SecondActivity.class));
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -24,6 +24,7 @@ public class MainPresenter extends BasePresenter<mViewInterface> {
 
     public void setData(){
         mViewInterface.showData(mainModelInterface.getData());
+
     }
 
 }

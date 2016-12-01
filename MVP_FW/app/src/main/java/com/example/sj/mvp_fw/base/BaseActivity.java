@@ -3,7 +3,11 @@ package com.example.sj.mvp_fw.base;
 import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
 import android.view.View;
+
+import com.example.sj.mvp_fw.handler.UIHandler;
+import com.example.sj.mvp_fw.interfaces.mViewInterface;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 
@@ -13,7 +17,6 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 
 public abstract class BaseActivity<V,T extends  BasePresenter<V>> extends Activity {
     private final static String TAG ="BaseActivity";
-
 
     protected T mPresenter;
 
@@ -30,7 +33,6 @@ public abstract class BaseActivity<V,T extends  BasePresenter<V>> extends Activi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         initView();
         mPresenter = createPresenter();
         mPresenter.attachView((V)this);
@@ -61,8 +63,13 @@ public abstract class BaseActivity<V,T extends  BasePresenter<V>> extends Activi
     protected void initView(){
 
     }
+    protected abstract void initfindViewById();
+
     protected abstract void test();
 
     protected abstract T createPresenter();
+
+    protected abstract void setListener();
+
 
 }
