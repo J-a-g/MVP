@@ -8,12 +8,11 @@ import android.widget.TextView;
 import com.example.sj.mvp_fw.R;
 import com.example.sj.mvp_fw.base.BaseActivity;
 import com.example.sj.mvp_fw.base.BasePresenter;
-import com.example.sj.mvp_fw.interfaces.mViewInterface;
+import com.example.sj.mvp_fw.interfaces.IMainView;
 import com.example.sj.mvp_fw.presenter.MainPresenter;
 
-import static android.os.Build.VERSION_CODES.M;
 
-public class MainActivity extends BaseActivity<mViewInterface,BasePresenter<mViewInterface>> implements mViewInterface,View.OnClickListener{
+public class MainActivity extends BaseActivity<IMainView,BasePresenter<IMainView>> implements IMainView,View.OnClickListener{
 
     private MainPresenter mainPresenter;
     private TextView textView;

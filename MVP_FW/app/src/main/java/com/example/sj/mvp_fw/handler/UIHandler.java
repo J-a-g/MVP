@@ -4,6 +4,7 @@ package com.example.sj.mvp_fw.handler;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 
 import com.example.sj.mvp_fw.interfaces.IHandler;
 
@@ -34,7 +35,9 @@ public class UIHandler extends Handler {
     @Override
     public void handleMessage(Message msg) {
         super.handleMessage(msg);
+        Log.v("TAG","handleMessage...1");
         if(handler != null){
+            Log.v("TAG","handleMessage...2");
             handler.handlerMessages(msg);
         }
     }

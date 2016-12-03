@@ -1,15 +1,7 @@
 package com.example.sj.mvp_fw.base;
 
 import android.app.Activity;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Looper;
-import android.view.View;
-
-import com.example.sj.mvp_fw.handler.UIHandler;
-import com.example.sj.mvp_fw.interfaces.mViewInterface;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 
 /**
  * Created by SJ on 2016.11.29.
