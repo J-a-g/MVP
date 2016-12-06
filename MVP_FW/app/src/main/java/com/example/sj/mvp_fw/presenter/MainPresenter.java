@@ -4,6 +4,7 @@ import com.example.sj.mvp_fw.base.BasePresenter;
 import com.example.sj.mvp_fw.interfaces.IMainModel;
 import com.example.sj.mvp_fw.interfaces.IMainView;
 import com.example.sj.mvp_fw.model.MainModelImpl;
+import com.example.sj.mvp_fw.view.MainActivity;
 
 
 /**
@@ -17,7 +18,7 @@ public class MainPresenter extends BasePresenter<IMainView> {
     private IMainView iMainView;
 
     public MainPresenter(IMainView iMainView) {
-        this.iMainView = iMainView;
+        bindView(iMainView);
     }
 
 
@@ -26,4 +27,8 @@ public class MainPresenter extends BasePresenter<IMainView> {
 
     }
 
+    @Override
+    protected void bindView(IMainView IView) {
+        this.iMainView = IView;
+    }
 }

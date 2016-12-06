@@ -22,7 +22,6 @@ public class SecondPresenter extends BasePresenter<ISecondView>{
     private IMainView iMainView;
 
     private IDataCallback<Message> iDataCallback;
-    //prviate MainModelInterface
     private UIHandler uiHandler = new UIHandler(Looper.getMainLooper());
 
     public void setiDataCallback(IDataCallback iDataCallback) {
@@ -30,20 +29,19 @@ public class SecondPresenter extends BasePresenter<ISecondView>{
     }
 
     public SecondPresenter() {
+
     }
 
+
     public SecondPresenter(SecondActivity iSecondView) {
-        this.iSecondView = iSecondView;
-        this.iMainView = iSecondView;
+        bindView(iSecondView);
     }
 
 
     public void btn1Onclick(){
-        Log.v("TAG","btn1Onclick...");
         uiHandler.setHandler(new IHandler() {
             @Override
             public void handlerMessages(Message msg) {
-                Log.v("TAG","handlerMessages...");
                 iDataCallback.dataCallback(msg);
             }
         });
@@ -56,5 +54,11 @@ public class SecondPresenter extends BasePresenter<ISecondView>{
         iMainView.showData("test");
         //Message msg = new Message();
         //uiHandler.handleMessage(msg);
+    }
+
+
+    @Override
+    protected void bindView(ISecondView IView) {
+
     }
 }

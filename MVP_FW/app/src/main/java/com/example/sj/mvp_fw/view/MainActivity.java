@@ -38,7 +38,7 @@ public class MainActivity extends BaseActivity<IMainView,BasePresenter<IMainView
 
     @Override
     protected BasePresenter createPresenter() {
-        return new MainPresenter(this);
+        return new MainPresenter();
     }
 
     @Override

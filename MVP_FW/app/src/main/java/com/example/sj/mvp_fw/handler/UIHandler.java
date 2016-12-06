@@ -35,9 +35,7 @@ public class UIHandler extends Handler {
     @Override
     public void handleMessage(Message msg) {
         super.handleMessage(msg);
-        Log.v("TAG","handleMessage...1");
         if(handler != null){
-            Log.v("TAG","handleMessage...2");
             handler.handlerMessages(msg);
         }
     }

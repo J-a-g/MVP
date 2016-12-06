@@ -32,4 +32,6 @@ public abstract class BasePresenter<T> {
         }
     }
 
+    protected abstract void bindView(T IView);
+
 }
